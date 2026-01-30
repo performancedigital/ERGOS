@@ -15,81 +15,93 @@ const Simulator: React.FC = () => {
     const priceVal = parseFloat(kwhPrice);
 
     if (billVal > 0 && priceVal > 0) {
-      const monthlyKwh = billVal / priceVal;
-      const yearlyKwh = monthlyKwh * 12;
       const yearlySaving = (billVal - 60) * 12 * 0.95;
-
       setResult({
         yearlySaving: yearlySaving > 0 ? yearlySaving : 0,
-        yearlyKwh: Math.round(yearlyKwh)
+        yearlyKwh: Math.round((billVal / priceVal) * 12)
       });
     }
   };
 
-  const whatsappMessage = result 
-    ? `Oi! Usei o simulador no site da Ergos. Minha conta é R$ ${bill}. Minha economia estimada é de R$ ${result.yearlySaving.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} ao ano. Quero um orçamento personalizado!`
-    : `Oi! Quero fazer uma simulação personalizada com a Ergos Engenharia Solar.`;
-
   return (
-    <section id="simulador" className="bg-slate-50 py-24 px-6 scroll-mt-20">
-      <div className="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-slate-100">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-black mb-4 text-slate-900 tracking-tight uppercase">Simulador de Economia</h2>
-          <p className="text-slate-500 text-lg">Descubra o potencial do sol para o seu bolso</p>
+    <section id="simulador" className="py-32 px-6">
+      <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-px bg-slate-900 rounded-[3.5rem] overflow-hidden shadow-2xl border border-slate-800">
+        
+        <div className="lg:w-1/2 p-12 md:p-16 bg-white space-y-10">
+          <div className="space-y-4">
+            <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase italic">CALCULE O <br/><span style={{ color: COLORS.blueSolid }}>SEU LUCRO.</span></h2>
+            <p className="text-slate-500 font-bold text-sm uppercase tracking-widest">Baseado no custo da sua energia hoje</p>
+          </div>
+
+          <div className="space-y-8">
+            <div className="space-y-3">
+              <label className="font-black text-slate-400 uppercase text-[10px] tracking-[0.2em]">Custo Mensal Atual (R$)</label>
+              <div className="relative">
+                 <span className="absolute left-5 top-1/2 -translate-y-1/2 font-black text-slate-300 text-2xl">R$</span>
+                 <input 
+                  type="number" 
+                  value={bill}
+                  onChange={(e) => setBill(e.target.value)}
+                  placeholder="Ex: 600" 
+                  className="w-full p-6 pl-16 bg-slate-50 border-2 border-slate-100 rounded-3xl outline-none focus:border-yellow-400 transition-all font-black text-3xl tracking-tighter"
+                />
+              </div>
+            </div>
+            
+            <div className="space-y-3">
+              <label className="font-black text-slate-400 uppercase text-[10px] tracking-[0.2em]">Tarifa kWh Concessionária</label>
+              <input 
+                type="number" 
+                step="0.01"
+                value={kwhPrice}
+                onChange={(e) => setKwhPrice(e.target.value)}
+                placeholder="Ex: 0.95" 
+                className="w-full p-6 bg-slate-50 border-2 border-slate-100 rounded-3xl outline-none focus:border-blue-400 transition-all font-black text-xl"
+              />
+            </div>
+          </div>
+
+          <button 
+            onClick={calculate}
+            className="w-full py-7 rounded-3xl font-black text-2xl hover:scale-[1.02] transition-all shadow-xl active:scale-95 uppercase tracking-tighter"
+            style={{ backgroundColor: COLORS.primary, color: COLORS.secondary }}
+          >
+            Ver Minha Economia
+          </button>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-3">
-            <label className="font-bold text-slate-700 uppercase text-sm tracking-widest">Valor da conta de luz (R$)</label>
-            <input 
-              type="number" 
-              value={bill}
-              onChange={(e) => setBill(e.target.value)}
-              placeholder="Ex: 600" 
-              className="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-400 transition-all font-bold text-xl"
-            />
-          </div>
-          <div className="space-y-3">
-            <label className="font-bold text-slate-700 uppercase text-sm tracking-widest">Preço do kWh (R$)</label>
-            <input 
-              type="number" 
-              step="0.01"
-              value={kwhPrice}
-              onChange={(e) => setKwhPrice(e.target.value)}
-              placeholder="Ex: 0.95" 
-              className="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-400 transition-all font-bold text-xl"
-            />
-          </div>
+        <div className="lg:w-1/2 p-12 md:p-16 flex flex-col justify-center items-center text-center space-y-8 bg-[#0F2027] relative overflow-hidden">
+           <div className="absolute inset-0 solar-grid opacity-10"></div>
+           {!result ? (
+             <div className="relative z-10 animate-pulse text-slate-500 font-black text-xl uppercase tracking-[0.2em]">
+                Aguardando dados...
+             </div>
+           ) : (
+             <div className="relative z-10 space-y-10 animate-in fade-in zoom-in duration-500">
+                <div className="space-y-2">
+                   <p className="text-slate-400 font-black uppercase text-[10px] tracking-[0.3em]">Economia Anual Estimada</p>
+                   <h3 className="text-6xl md:text-7xl font-black italic tracking-tighter text-glow" style={{ color: COLORS.secondary }}>
+                     R$ {result.yearlySaving.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                   </h3>
+                </div>
+
+                <div className="p-6 glass rounded-3xl border border-white/10 space-y-1">
+                   <p className="text-white font-black text-2xl tracking-tighter uppercase">{result.yearlyKwh} kWh</p>
+                   <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Energia produzida/ano</p>
+                </div>
+
+                <a 
+                  href={BRAND.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-4 px-12 py-6 rounded-full font-black text-xl shadow-[0_0_40px_rgba(255,242,0,0.3)] hover:scale-105 transition-all uppercase tracking-tighter"
+                  style={{ backgroundColor: COLORS.secondary, color: COLORS.primary }}
+                >
+                  Solicitar estudo agora
+                </a>
+             </div>
+           )}
         </div>
-
-        <button 
-          onClick={calculate}
-          className="w-full mt-10 text-white py-6 rounded-2xl font-black text-2xl hover:brightness-110 transition-all shadow-xl active:scale-95 uppercase tracking-tighter"
-          style={{ backgroundColor: COLORS.blueSolid }}
-        >
-          Calcular Agora
-        </button>
-
-        {result && (
-          <div className="mt-12 p-10 rounded-[2rem] text-center animate-in fade-in zoom-in duration-500 shadow-2xl" style={{ backgroundColor: COLORS.primary }}>
-            <p className="text-slate-400 font-bold uppercase tracking-widest mb-2">Sua economia anual estimada:</p>
-            <h3 className="text-5xl md:text-6xl font-black my-6" style={{ color: COLORS.secondary }}>
-              R$ {result.yearlySaving.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-            </h3>
-            <p className="text-slate-300 mb-10 text-lg font-medium">
-              Você deixará de pagar <span className="text-white font-bold">{result.yearlyKwh} kWh</span> por ano para a concessionária.
-            </p>
-            <a 
-              href={`${BRAND.whatsappLink}?text=${encodeURIComponent(whatsappMessage)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-12 py-5 rounded-full font-black text-xl shadow-xl hover:scale-105 transition-transform"
-              style={{ backgroundColor: COLORS.secondary, color: COLORS.primary }}
-            >
-              Faça sua simulação agora
-            </a>
-          </div>
-        )}
       </div>
     </section>
   );

@@ -4,12 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ergos Energia Solar - Preview</title>
+    <title>Ergos Engenharia Solar - A Precisão da Tecnologia</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .solar-grid {
+            background-image: linear-gradient(#ffffff05 1px, transparent 1px), linear-gradient(90deg, #ffffff05 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .slanted-bottom {
+            clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+        }
+        .slanted-top {
+            clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 242, 0, 0.3);
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 <script type="importmap">
 {
@@ -22,7 +40,6 @@
 </script>
 </head>
 <body class="bg-white">
-    <!-- Este arquivo serve apenas como guia local. Para WordPress, siga as instruções fornecidas na conversa. -->
     <div id="root"></div>
 </body>
 </html>
