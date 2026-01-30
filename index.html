@@ -4,9 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ergos Engenharia Solar | Especialistas em Alta Performance</title>
+    <title>Ergos Engenharia Solar | Alta Performance em Energia</title>
+    <meta name="description" content="Especialistas em engenharia solar fotovoltaica. Projetos de alta performance para economia real.">
+    
+    <!-- Tailwind via CDN para prototipagem rápida e flexibilidade -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tipografia Profissional -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary: #0F2027;
@@ -20,7 +26,10 @@
             color: #1e293b;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
+        
+        /* Efeitos Visuais Premium */
         .solar-grid {
             background-image: 
                 linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), 
@@ -35,10 +44,39 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
         ::selection {
             background-color: var(--secondary);
             color: var(--primary);
         }
     </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
 </head>
 <body class="bg-white">
+    <div id="root"></div>
+    <!-- O Vite transformará este arquivo TSX em JS durante o build no Vercel -->
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
