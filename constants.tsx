@@ -3,7 +3,7 @@ export const COLORS = {
   white: '#FFFFFF',
   blueLight: '#298bde',
   blueSolid: '#0c4acd',
-  primary: '#0F2027', // Navy Marinho Profundo
+  primary: '#0F2027', // Marinho Profundo
   secondary: '#FFF200', // Amarelo Solar
   whatsapp: '#25D366'
 };

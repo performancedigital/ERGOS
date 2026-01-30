@@ -4,53 +4,49 @@ import { COLORS, IMAGES, BRAND } from '../constants';
 
 const About: React.FC = () => {
   return (
-    <section id="historia" className="py-32 px-6 max-w-7xl mx-auto">
-      <div className="flex flex-col lg:flex-row gap-20 items-center">
-        <div className="lg:w-1/2 order-2 lg:order-1">
+    <section id="historia" className="py-40 px-6 max-w-7xl mx-auto">
+      <div className="flex flex-col lg:flex-row gap-28 items-center">
+        <div className="lg:w-1/2">
           <div className="relative group">
-            <div className="absolute -top-10 -left-10 w-full h-full bg-slate-100 rounded-[3rem] -z-10 group-hover:-translate-x-2 group-hover:-translate-y-2 transition-transform duration-500"></div>
+            <div className="absolute -inset-4 border border-slate-100 rounded-[2.5rem] -z-10 group-hover:scale-105 transition-transform duration-700"></div>
             <img 
                 src={IMAGES.team} 
-                className="relative rounded-[3rem] shadow-2xl z-10 w-full aspect-video object-cover grayscale hover:grayscale-0 transition-all duration-1000" 
-                alt="Nossa Equipe Ergos" 
+                className="relative rounded-[2rem] shadow-2xl w-full aspect-square object-cover" 
+                alt="Equipe Técnica Ergos" 
             />
-            <div className="absolute -bottom-8 -right-8 glass p-8 rounded-3xl z-20 shadow-xl border-l-4" style={{ borderLeftColor: COLORS.secondary }}>
-              <p className="text-4xl font-black italic tracking-tighter" style={{ color: COLORS.primary }}>
-                "SOL É LUCRO"
-              </p>
-              <p className="text-[10px] uppercase tracking-widest font-black opacity-50">Assinatura Ergos</p>
+            <div className="absolute -bottom-10 -right-10 bg-white p-10 rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.08)] border border-slate-50">
+              <div className="space-y-2">
+                <span className="text-[11px] font-bold text-blue-600 uppercase tracking-widest">Experiência</span>
+                <p className="text-3xl font-extrabold text-slate-900 tracking-tight">Referência em <br/>Minas Gerais</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="lg:w-1/2 space-y-8 order-1 lg:order-2">
-          <div className="flex items-center gap-4">
-            <div className="w-16 h-1 rounded-full" style={{ backgroundColor: COLORS.secondary }}></div>
-            <span className="font-black text-xs uppercase tracking-[0.3em]" style={{ color: COLORS.blueSolid }}>Precisão Absoluta</span>
+        <div className="lg:w-1/2 space-y-10">
+          <div className="space-y-6">
+            <div className="flex items-center gap-4">
+              <span className="w-12 h-0.5 bg-yellow-400"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.4em] text-slate-400">Nossa Identidade</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              Onde a engenharia <br/>
+              <span className="text-slate-300">encontra o sol.</span>
+            </h2>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-black text-slate-900 leading-[0.9] uppercase tracking-tighter">
-            ENGENHARIA QUE <br/><span style={{ color: COLORS.blueLight }}>DOMINA O SOL.</span>
-          </h2>
-          
-          <p className="text-xl text-slate-600 leading-relaxed font-medium">
-            Na <strong>Ergos</strong>, não apenas instalamos placas. Nós projetamos usinas de alta performance com a precisão de quem entende que cada centímetro de sombra custa dinheiro. 
+          <p className="text-xl text-slate-500 leading-relaxed font-medium">
+            Na <strong>Ergos</strong>, o projeto é tratado como investimento financeiro. Utilizamos simulações termográficas e análises de sombreamento 3D para garantir que sua usina produza <span className="text-slate-900 font-bold underline decoration-yellow-400 decoration-4">o máximo por m².</span>
           </p>
 
-          <div className="grid grid-cols-2 gap-10 pt-10 border-t border-slate-100">
+          <div className="grid grid-cols-2 gap-16 pt-12 border-t border-slate-100">
              <div className="space-y-2">
-               <p className="text-6xl font-black tracking-tighter leading-none" style={{ color: COLORS.primary }}>{BRAND.stats.years}</p>
-               <div className="flex flex-col">
-                  <p className="text-slate-900 font-black uppercase text-xs tracking-widest">Anos de Mercado</p>
-                  <p className="text-slate-400 text-[10px] font-bold">Experiência comprovada</p>
-               </div>
+               <p className="text-6xl font-extrabold text-slate-900 tracking-tighter">{BRAND.stats.years}</p>
+               <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.2em]">Anos de Mercado</p>
              </div>
              <div className="space-y-2">
-               <p className="text-6xl font-black tracking-tighter leading-none" style={{ color: COLORS.primary }}>{BRAND.stats.clients}</p>
-               <div className="flex flex-col">
-                  <p className="text-slate-900 font-black uppercase text-xs tracking-widest">Clientes Satisfeitos</p>
-                  <p className="text-slate-400 text-[10px] font-bold">Independência gerada</p>
-               </div>
+               <p className="text-6xl font-extrabold text-slate-900 tracking-tighter">{BRAND.stats.clients}</p>
+               <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.2em]">Clientes Satisfeitos</p>
              </div>
           </div>
         </div>
