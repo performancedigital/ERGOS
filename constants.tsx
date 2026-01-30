@@ -25,7 +25,7 @@ export const BRAND = {
 };
 
 export const IMAGES = {
-  logo: 'https://images.unsplash.com/photo-1594818371393-3246211c1628?q=80&w=200&h=200&auto=format&fit=crop',
+  logo: 'logo.jpg',
   hero: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1200&auto=format&fit=crop',
   team: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1000&auto=format&fit=crop',
   client1: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&auto=format&fit=crop',
