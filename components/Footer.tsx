@@ -1,18 +1,31 @@
 
 import React from 'react';
-import { BRAND, COLORS } from '../constants';
+import { BRAND, COLORS, IMAGES } from '../constants';
 
 const Footer: React.FC = () => {
+  const logoUrl = IMAGES.logo.startsWith('http') ? IMAGES.logo : `./${IMAGES.logo}?v=${new Date().getTime()}`;
+
   return (
     <footer className="bg-slate-950 text-white pt-32 pb-16 px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-20 relative z-10">
         <div className="lg:col-span-2 space-y-10">
           <div className="flex items-center gap-4">
             <div 
-              className="w-16 h-16 rounded-2xl flex items-center justify-center font-black shadow-2xl text-3xl"
-              style={{ backgroundColor: COLORS.secondary, color: COLORS.primary }}
+              className="w-16 h-16 rounded-2xl flex items-center justify-center font-black shadow-2xl text-3xl overflow-hidden bg-white/5"
+              style={{ backgroundColor: COLORS.secondary }}
             >
-              E
+              <img 
+                src={logoUrl} 
+                alt="Logo Ergos" 
+                className="w-full h-full object-contain p-2"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  if (target.parentElement) {
+                    target.parentElement.innerHTML = `<span style="color: ${COLORS.primary}">E</span>`;
+                  }
+                }} 
+              />
             </div>
             <div className="flex flex-col -space-y-1">
               <span className="font-black text-4xl tracking-tighter uppercase italic">ERGOS</span>

@@ -24,8 +24,15 @@ export const BRAND = {
   }
 };
 
+/**
+ * INSTRUÇÕES PARA TROCAR FOTOS:
+ * 1. Suba o arquivo para o GitHub (ex: logo.jpg, foto-topo.jpg).
+ * 2. O nome aqui deve ser EXATAMENTE igual ao nome do arquivo (cuidado com maiúsculas/minúsculas).
+ */
 export const IMAGES = {
-  logo: 'logo.jpg',
+  // Alterado para caminho relativo
+  logo: 'logo.jpg', 
+  
   hero: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1200&auto=format&fit=crop',
   team: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1000&auto=format&fit=crop',
   client1: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&auto=format&fit=crop',

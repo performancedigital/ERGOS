@@ -1,20 +1,34 @@
 
 import React from 'react';
-import { COLORS, BRAND } from '../constants';
+import { COLORS, BRAND, IMAGES } from '../constants';
 
 const Navbar: React.FC = () => {
+  // Adiciona um timestamp para evitar cache de imagens antigas
+  const logoUrl = IMAGES.logo.startsWith('http') ? IMAGES.logo : `./${IMAGES.logo}?v=${new Date().getTime()}`;
+
   return (
     <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-100 py-4 px-6 transition-all">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <div 
-            className="w-10 h-10 rounded-lg flex items-center justify-center font-bold shadow-md transition-transform group-hover:scale-105"
-            style={{ backgroundColor: COLORS.primary, color: COLORS.secondary }}
+            className="w-10 h-10 rounded-lg flex items-center justify-center font-bold shadow-md transition-transform group-hover:scale-105 overflow-hidden bg-slate-100"
+            style={{ backgroundColor: COLORS.primary }}
           >
-            E
+            <img 
+              src={logoUrl} 
+              alt="Logo Ergos" 
+              className="w-full h-full object-contain p-1"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                if (target.parentElement) {
+                  target.parentElement.innerHTML = `<span style="color: ${COLORS.secondary}">E</span>`;
+                }
+              }} 
+            />
           </div>
           <div className="flex flex-col -space-y-1">
-            <span className="font-extrabold text-xl tracking-tight text-slate-900">ERGOS</span>
+            <span className="font-extrabold text-xl tracking-tight text-slate-900 uppercase">ERGOS</span>
             <span className="font-medium text-[9px] tracking-[0.2em] uppercase opacity-50" style={{ color: COLORS.blueSolid }}>Engenharia Solar</span>
           </div>
         </div>
