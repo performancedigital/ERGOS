@@ -1,17 +1,27 @@
 
 export const COLORS = {
-  primary: '#004AAD',
-  secondary: '#FFD700',
-  accent: '#059669',
+  white: '#FFFFFF',
+  blueLight: '#298bde',
+  blueSolid: '#0c4acd',
+  primary: '#0F2027', // Marinho Escuro/Preto Azulado
+  secondary: '#FFF200', // Amarelo Ergos
   whatsapp: '#25D366'
 };
 
 export const BRAND = {
-  name: 'Ergos Energia Solar',
+  name: 'Ergos Engenharia Solar',
   phone: '31 99688-3604',
   whatsappLink: 'https://wa.me/5531996883604',
-  instagram: 'ergosenergiasolar_',
-  cnpj: '38.423.890/0001-44' // Valor fictício, substitua se necessário
+  instagram: 'ergos.engenharia',
+  instagramLink: 'https://www.instagram.com/ergos.engenharia',
+  email: 'contato@ergosengenhariasolar.com',
+  location: 'Coronel Fabriciano - MG',
+  cnpj: '48.586.268/0001-83',
+  year: '2026',
+  stats: {
+    years: '5',
+    clients: '50+'
+  }
 };
 
 export const IMAGES = {
