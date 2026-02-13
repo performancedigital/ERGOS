@@ -58,11 +58,9 @@ const Hero: React.FC = () => {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
               {/* CTA PRIMÁRIO */}
-              <a
-                href={BRAND.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl font-black text-xl uppercase tracking-wide transition-all hover:scale-105 active:scale-95 shadow-2xl"
+              <button
+                onClick={() => openModal(BRAND.whatsappLink)}
+                className="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl font-black text-xl uppercase tracking-wide transition-all hover:scale-105 active:scale-95 shadow-2xl cursor-pointer"
                 style={{
                   backgroundColor: COLORS.secondary,
                   color: COLORS.primary
@@ -70,7 +68,7 @@ const Hero: React.FC = () => {
               >
                 <span>Solicitar orçamento gratuito</span>
                 <span className="text-2xl">→</span>
-              </a>
+              </button>
 
               {/* CTA SECUNDÁRIO */}
               <a
