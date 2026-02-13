@@ -19,14 +19,12 @@ const Footer: React.FC = () => {
           <div className="flex items-center gap-4">
             {/* Logo */}
             <div
-              className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-2xl"
-              style={{ backgroundColor: COLORS.secondary }}
+              className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-2xl bg-white"
             >
               <img
                 src={IMAGES.logo}
                 alt="Logo Ergos"
-                className="w-14 h-14 object-contain"
-                style={{ mixBlendMode: 'multiply' }}
+                className="w-16 h-16 object-contain"
               />
             </div>
 

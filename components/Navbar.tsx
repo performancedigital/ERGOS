@@ -16,8 +16,8 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
+        ? 'bg-white/95 backdrop-blur-md shadow-lg'
+        : 'bg-transparent'
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
@@ -35,12 +35,12 @@ const Navbar: React.FC = () => {
                 background: `linear-gradient(135deg, ${COLORS.primary} 0%, ${COLORS.primaryLight} 100%)`
               }}
             >
-              <img
-                src={IMAGES.logo}
-                alt="Logo Ergos"
-                className="w-10 h-10 object-contain"
-                style={{ mixBlendMode: 'multiply' }}
-              />
+              <span
+                className="text-2xl font-black"
+                style={{ color: COLORS.secondary }}
+              >
+                E
+              </span>
             </div>
 
             <div className="flex flex-col -space-y-1">
