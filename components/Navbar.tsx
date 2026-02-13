@@ -35,12 +35,11 @@ const Navbar: React.FC = () => {
                 background: `linear-gradient(135deg, ${COLORS.primary} 0%, ${COLORS.primaryLight} 100%)`
               }}
             >
-              <span
-                className="text-2xl font-black"
-                style={{ color: COLORS.secondary }}
-              >
-                E
-              </span>
+              <img
+                src={IMAGES.logo}
+                alt="Logo Ergos"
+                className="w-14 h-14 rounded-full object-cover"
+              />
             </div>
 
             <div className="flex flex-col -space-y-1">
