@@ -1,10 +1,9 @@
-
 export const COLORS = {
   white: '#FFFFFF',
   blueLight: '#298bde',
   blueSolid: '#0c4acd',
-  primary: '#0F2027', // Marinho Profundo
-  secondary: '#FFF200', // Amarelo Solar
+  primary: '#0f2027', // Azul Escuro ERGOS
+  secondary: '#FFF200', // Amarelo ERGOS
   whatsapp: '#25D366'
 };
 
@@ -31,11 +30,6 @@ export const BRAND = {
  */
 export const IMAGES = {
   // Alterado para caminho relativo
-  logo: 'logo.jpg', 
-  
+  logo: 'logo.jpg',
   hero: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1200&auto=format&fit=crop',
-  team: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1000&auto=format&fit=crop',
-  client1: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&auto=format&fit=crop',
-  client2: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&h=200&auto=format&fit=crop',
-  client3: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&h=200&auto=format&fit=crop'
 };
