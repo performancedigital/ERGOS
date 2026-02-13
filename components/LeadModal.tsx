@@ -31,16 +31,16 @@ const LeadModal: React.FC = () => {
             // Note: 'no-cors' mode might be needed if N8N doesn't handle CORS correctly, 
             // but 'no-cors' prevents reading response. usually N8N webhook returns 200 OK.
             // I'll try standard fetch first.
+            const data = new FormData();
+            data.append('name', formData.name);
+            data.append('whatsapp', formData.whatsapp);
+            data.append('billValue', formData.billValue);
+            data.append('source', 'site_ergos');
+            data.append('date', new Date().toISOString());
+
             await fetch(WEBHOOK_URL, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    ...formData,
-                    source: 'site_ergos',
-                    date: new Date().toISOString()
-                }),
+                body: data,
             });
 
             // Navigate to /obrigado
