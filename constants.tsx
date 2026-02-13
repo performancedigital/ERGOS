@@ -3,15 +3,15 @@ export const COLORS = {
   primary: '#0c4acd',        // ← ERA #0F2027 (PRETO)
   primaryLight: '#298bde',
   primaryDark: '#0a3ba8',
-  
+
   // DESTAQUES
   secondary: '#FFF200',
   secondaryDark: '#E6DA00',
-  
+
   // NEUTROS
   white: '#FFFFFF',
   black: '#0F2027',
-  
+
   // FUNCIONAIS
   whatsapp: '#25D366',
   success: '#10B981',
@@ -26,7 +26,7 @@ export const GRADIENTS = {
 
 export const BRAND = {
   name: 'Ergos Engenharia Solar',
-  tagline: 'Energia positiva, resultados positivos.', // ← NOVA (do Instagram)
+  tagline: 'Energia positiva, resultados positivos.',
   phone: '31 99688-3604',
   whatsappLink: 'https://wa.me/5531996883604',
   instagram: 'ergos.engenharia',
@@ -35,7 +35,7 @@ export const BRAND = {
   website: 'ergosengenhariasolar.com.br',
   location: 'Coronel Fabriciano - MG',
   cnpj: '48.586.268/0001-83',
-  year: new Date().getFullYear().toString(), // ← DINÂMICO
+  year: new Date().getFullYear().toString(),
   stats: {
     years: '5+',
     clients: '50+',
@@ -45,15 +45,11 @@ export const BRAND = {
 };
 
 export const IMAGES = {
-  logo: '/logo.png',                      // Logo circular azul
-  logoPattern: '/logo-pattern.svg',       // Pattern geométrico amarelo
-  hero: '/images/hero-solar-panels.jpg',  // Trocar Unsplash por foto real
-  team: '/images/team-ergos.jpg',
-  client1: '/images/client-1.jpg',
-  client2: '/images/client-2.jpg',
-  client3: '/images/client-3.jpg',
-  // Adicionar imagens do Instagram
-  post1: '/images/instagram-post-1.jpg',
-  post2: '/images/instagram-post-2.jpg',
-  post3: '/images/instagram-post-3.jpg',
+  logo: '/logo.png',
+  logoPattern: '/logo-pattern.svg',
+  hero: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80',
+  team: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80',
+  client1: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80',
+  client2: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80',
+  client3: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80',
 };
