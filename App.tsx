@@ -1,30 +1,17 @@
 
 import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Features from './components/Features';
-import Simulator from './components/Simulator';
-import Testimonials from './components/Testimonials';
-import CTA from './components/CTA';
-import Footer from './components/Footer';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './components/LandingPage';
+import ThankYou from './components/ThankYou';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Features />
-        <Simulator />
-        <Testimonials />
-        <CTA />
-      </main>
-      <Footer />
-      <FloatingWhatsApp />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/obrigado" element={<ThankYou />} />
+      </Routes>
+    </Router>
   );
 };
 
