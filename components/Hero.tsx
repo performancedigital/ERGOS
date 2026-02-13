@@ -1,7 +1,10 @@
 import React from 'react';
 import { COLORS, GRADIENTS, IMAGES, BRAND } from '../constants';
+import { useLeadModal } from '../contexts/LeadContext';
 
 const Hero: React.FC = () => {
+  const { openModal } = useLeadModal();
+
   return (
     <section
       id="home"
