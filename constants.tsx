@@ -47,9 +47,9 @@ export const BRAND = {
 export const IMAGES = {
   logo: '/logo.png',
   logoPattern: '/logo-pattern.svg',
-  hero: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80',
-  team: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80',
-  client1: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80',
-  client2: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80',
-  client3: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80',
+  hero: '/images/hero-solar-panels.jpg',
+  team: '/images/team-ergos.jpg',
+  client1: '/images/client-1.jpg',
+  client2: '/images/client-2.jpg',
+  client3: '/images/client-3.jpg',
 };
