@@ -7,49 +7,7 @@ const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { openModal } = useLeadModal();
 
-  // ... (useEffect remains same)
-
-  {/* CTA BUTTON */ }
-  <div className="flex items-center gap-4">
-    <button
-      onClick={openModal}
-      className="hidden md:flex items-center gap-2 px-6 py-3 rounded-full font-black text-sm uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-lg cursor-pointer"
-      style={{
-        backgroundColor: COLORS.secondary,
-        color: COLORS.primary
-      }}
-    >
-      <span>Solicitar Orçamento</span>
-      <span className="text-lg">→</span>
-    </button>
-
-    {/* ... (mobile menu button remains same) ... */}
-
-    {/* MENU MOBILE (overlay) */}
-    {mobileMenuOpen && (
-      <div
-        className="lg:hidden fixed inset-0 top-[72px] z-40"
-        style={{ background: `linear-gradient(180deg, ${COLORS.primary} 0%, ${COLORS.primaryDark} 100%)` }}
-      >
-        <div className="flex flex-col items-center justify-center h-full gap-8 text-white">
-          {/* ... links ... */}
-
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              openModal();
-            }}
-            className="mt-8 px-10 py-4 rounded-full font-black text-xl uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-2xl cursor-pointer"
-            style={{
-              backgroundColor: COLORS.secondary,
-              color: COLORS.primary
-            }}
-          >
-            Solicitar Orçamento →
-          </button>
-        </div>
-      </div>
-    )}
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -57,7 +15,7 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-    return (
+  return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
         ? 'bg-white/95 backdrop-blur-md shadow-lg'
@@ -140,11 +98,9 @@ const Navbar: React.FC = () => {
 
           {/* CTA BUTTON */}
           <div className="flex items-center gap-4">
-            <a
-              href={BRAND.whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:flex items-center gap-2 px-6 py-3 rounded-full font-black text-sm uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-lg"
+            <button
+              onClick={openModal}
+              className="hidden md:flex items-center gap-2 px-6 py-3 rounded-full font-black text-sm uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-lg cursor-pointer"
               style={{
                 backgroundColor: COLORS.secondary,
                 color: COLORS.primary
@@ -152,7 +108,7 @@ const Navbar: React.FC = () => {
             >
               <span>Solicitar Orçamento</span>
               <span className="text-lg">→</span>
-            </a>
+            </button>
 
             {/* MENU MOBILE HAMBURGER */}
             <button
@@ -216,23 +172,24 @@ const Navbar: React.FC = () => {
             >
               Instagram
             </a>
-            <a
-              href={BRAND.whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 px-10 py-4 rounded-full font-black text-xl uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-2xl"
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openModal();
+              }}
+              className="mt-8 px-10 py-4 rounded-full font-black text-xl uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-2xl cursor-pointer"
               style={{
                 backgroundColor: COLORS.secondary,
                 color: COLORS.primary
               }}
             >
               Solicitar Orçamento →
-            </a>
+            </button>
           </div>
         </div>
       )}
     </nav>
-    );
+  );
 };
 
-    export default Navbar;
+export default Navbar;

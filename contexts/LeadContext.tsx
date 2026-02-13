@@ -9,7 +9,7 @@ interface LeadContextType {
 
 const LeadContext = createContext<LeadContextType | undefined>(undefined);
 
-export const LeadProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const LeadProvider = ({ children }: { children: ReactNode }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => setIsModalOpen(true);
