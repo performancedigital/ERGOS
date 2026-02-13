@@ -19,12 +19,12 @@ const Footer: React.FC = () => {
           <div className="flex items-center gap-4">
             {/* Logo */}
             <div
-              className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-2xl bg-white"
+              className="w-20 h-20 rounded-full flex items-center justify-center shadow-2xl overflow-hidden border-2 border-white/10"
             >
               <img
                 src={IMAGES.logo}
                 alt="Logo Ergos"
-                className="w-16 h-16 object-contain"
+                className="w-full h-full object-cover"
               />
             </div>
 
