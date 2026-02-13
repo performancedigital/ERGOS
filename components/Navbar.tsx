@@ -1,62 +1,196 @@
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { COLORS, BRAND, IMAGES } from '../constants';
 
 const Navbar: React.FC = () => {
-  // Adiciona um timestamp para evitar cache de imagens antigas
-  const logoUrl = IMAGES.logo.startsWith('http') ? IMAGES.logo : `./${IMAGES.logo}?v=${new Date().getTime()}`;
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-100 py-4 px-6 transition-all">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+    <nav 
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="flex justify-between items-center">
+          
+          {/* LOGO + NOME */}
           <div 
-            className="w-10 h-10 rounded-lg flex items-center justify-center font-bold shadow-md transition-transform group-hover:scale-105 overflow-hidden bg-slate-100"
-            style={{ backgroundColor: COLORS.primary }}
+            className="flex items-center gap-3 cursor-pointer group" 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img 
-              src={logoUrl} 
-              alt="Logo Ergos" 
-              className="w-full h-full object-contain p-1"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-                if (target.parentElement) {
-                  target.parentElement.innerHTML = `<span style="color: ${COLORS.secondary}">E</span>`;
-                }
-              }} 
-            />
+            {/* Logo circular azul (como no Instagram) */}
+            <div 
+              className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform group-hover:scale-105 overflow-hidden"
+              style={{ 
+                background: `linear-gradient(135deg, ${COLORS.primary} 0%, ${COLORS.primaryLight} 100%)` 
+              }}
+            >
+              <img 
+                src={IMAGES.logoPattern} 
+                alt="Logo Ergos" 
+                className="w-10 h-10 object-contain"
+              />
+            </div>
+            
+            <div className="flex flex-col -space-y-1">
+              <span 
+                className="font-black text-2xl tracking-tight uppercase"
+                style={{ color: scrolled ? COLORS.primary : COLORS.white }}
+              >
+                ERGOS
+              </span>
+              <span 
+                className="font-bold text-[10px] tracking-[0.15em] uppercase"
+                style={{ 
+                  color: scrolled ? COLORS.primaryLight : 'rgba(255,255,255,0.8)' 
+                }}
+              >
+                Energia Solar
+              </span>
+            </div>
           </div>
-          <div className="flex flex-col -space-y-1">
-            <span className="font-extrabold text-xl tracking-tight text-slate-900 uppercase">ERGOS</span>
-            <span className="font-medium text-[9px] tracking-[0.2em] uppercase opacity-50" style={{ color: COLORS.blueSolid }}>Engenharia Solar</span>
+          
+          {/* MENU DESKTOP */}
+          <div className="hidden lg:flex items-center gap-8">
+            <a 
+              href="#home" 
+              className="font-bold text-sm uppercase tracking-widest transition-colors hover:opacity-80"
+              style={{ color: scrolled ? COLORS.primary : COLORS.white }}
+            >
+              Início
+            </a>
+            <a 
+              href="#sobre" 
+              className="font-bold text-sm uppercase tracking-widest transition-colors hover:opacity-80"
+              style={{ color: scrolled ? COLORS.primary : COLORS.white }}
+            >
+              Sobre
+            </a>
+            <a 
+              href="#simulador" 
+              className="font-bold text-sm uppercase tracking-widest transition-colors hover:opacity-80"
+              style={{ color: scrolled ? COLORS.primary : COLORS.white }}
+            >
+              Simulador
+            </a>
+            <a 
+              href={BRAND.instagramLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-sm uppercase tracking-widest transition-colors hover:opacity-80"
+              style={{ color: scrolled ? COLORS.primary : COLORS.white }}
+            >
+              Instagram
+            </a>
+          </div>
+          
+          {/* CTA BUTTON */}
+          <div className="flex items-center gap-4">
+            <a 
+              href={BRAND.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="hidden md:flex items-center gap-2 px-6 py-3 rounded-full font-black text-sm uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-lg"
+              style={{ 
+                backgroundColor: COLORS.secondary, 
+                color: COLORS.primary 
+              }}
+            >
+              <span>Solicitar Orçamento</span>
+              <span className="text-lg">→</span>
+            </a>
+            
+            {/* MENU MOBILE HAMBURGER */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5"
+              aria-label="Menu"
+            >
+              <span 
+                className={`w-6 h-0.5 transition-all ${
+                  mobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                }`}
+                style={{ backgroundColor: scrolled ? COLORS.primary : COLORS.white }}
+              />
+              <span 
+                className={`w-6 h-0.5 transition-all ${
+                  mobileMenuOpen ? 'opacity-0' : ''
+                }`}
+                style={{ backgroundColor: scrolled ? COLORS.primary : COLORS.white }}
+              />
+              <span 
+                className={`w-6 h-0.5 transition-all ${
+                  mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                }`}
+                style={{ backgroundColor: scrolled ? COLORS.primary : COLORS.white }}
+              />
+            </button>
           </div>
         </div>
-        
-        <div className="hidden lg:flex gap-8 font-semibold text-slate-500 items-center">
-          <a href="#home" className="hover:text-blue-600 transition-colors text-xs uppercase tracking-widest">Início</a>
-          <a href="#historia" className="hover:text-blue-600 transition-colors text-xs uppercase tracking-widest">A Empresa</a>
-          <a href="#simulador" className="hover:text-blue-600 transition-colors text-xs uppercase tracking-widest">Simulador</a>
-          <a 
-            href={BRAND.instagramLink} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-xs uppercase tracking-widest hover:text-pink-600 transition-colors"
-          >
-            Instagram
-          </a>
-        </div>
-        
-        <a 
-          href={BRAND.whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer" 
-          className="px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all hover:brightness-110 active:scale-95 shadow-lg shadow-yellow-400/20"
-          style={{ backgroundColor: COLORS.secondary, color: COLORS.primary }}
-        >
-          Solicitar Orçamento
-        </a>
       </div>
+      
+      {/* MENU MOBILE (overlay) */}
+      {mobileMenuOpen && (
+        <div 
+          className="lg:hidden fixed inset-0 top-[72px] z-40"
+          style={{ background: `linear-gradient(180deg, ${COLORS.primary} 0%, ${COLORS.primaryDark} 100%)` }}
+        >
+          <div className="flex flex-col items-center justify-center h-full gap-8 text-white">
+            <a 
+              href="#home" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="font-black text-2xl uppercase tracking-widest hover:text-yellow-300 transition-colors"
+            >
+              Início
+            </a>
+            <a 
+              href="#sobre" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="font-black text-2xl uppercase tracking-widest hover:text-yellow-300 transition-colors"
+            >
+              Sobre
+            </a>
+            <a 
+              href="#simulador" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="font-black text-2xl uppercase tracking-widest hover:text-yellow-300 transition-colors"
+            >
+              Simulador
+            </a>
+            <a 
+              href={BRAND.instagramLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-black text-2xl uppercase tracking-widest hover:text-yellow-300 transition-colors"
+            >
+              Instagram
+            </a>
+            <a 
+              href={BRAND.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="mt-8 px-10 py-4 rounded-full font-black text-xl uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-2xl"
+              style={{ 
+                backgroundColor: COLORS.secondary, 
+                color: COLORS.primary 
+              }}
+            >
+              Solicitar Orçamento →
+            </a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
