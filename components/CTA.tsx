@@ -1,9 +1,13 @@
 import React from 'react';
 import { COLORS, GRADIENTS, BRAND } from '../constants';
 
+import { useLeadModal } from '../contexts/LeadContext';
+
 const CTA: React.FC = () => {
+  const { openModal } = useLeadModal();
+
   return (
-    <section className="py-32 px-6 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div
           className="rounded-[3rem] p-16 md:p-24 text-center text-white relative overflow-hidden shadow-2xl"
@@ -55,11 +59,9 @@ const CTA: React.FC = () => {
 
             {/* CTA */}
             <div className="pt-6">
-              <a
-                href={BRAND.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-4 px-14 py-7 rounded-2xl font-black text-2xl uppercase tracking-tighter transition-all hover:scale-110 active:scale-95 shadow-2xl"
+              <button
+                onClick={openModal}
+                className="inline-flex items-center gap-4 px-14 py-7 rounded-2xl font-black text-2xl uppercase tracking-tighter transition-all hover:scale-110 active:scale-95 shadow-2xl cursor-pointer"
                 style={{
                   backgroundColor: COLORS.secondary,
                   color: COLORS.primary
@@ -67,7 +69,7 @@ const CTA: React.FC = () => {
               >
                 <span>Solicitar Orçamento Gratuito</span>
                 <span className="text-3xl">→</span>
-              </a>
+              </button>
             </div>
 
             {/* BADGES DE REFORÇO */}

@@ -44,6 +44,8 @@ export const BRAND = {
   }
 };
 
+export const WEBHOOK_URL = 'https://n8n.webhook.url/replace-me'; // ALTERAR PARA URL DO N8N
+
 export const IMAGES = {
   logo: '/logo.png',
   logoPattern: '/logo-pattern.svg',
