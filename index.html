@@ -6,43 +6,92 @@
     <title>Ergos Engenharia Solar | Alta Performance em Energia</title>
     <meta name="description" content="Especialistas em engenharia solar fotovoltaica em Minas Gerais. Projetos de alta performance para economia real de até 95%.">
     
-    <!-- Tailwind via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tipografia -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
-        :root {
-            --primary: #0F2027;
-            --secondary: #FFF200;
-        }
-        html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            margin: 0;
-            padding: 0;
-            color: #1e293b;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-        
-        .solar-grid {
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), 
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-        .section-curve {
-            clip-path: ellipse(150% 100% at 50% 100%);
-        }
-        .glass-dark {
-            background: rgba(15, 32, 39, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
+    :root {
+        /* CORES ATUALIZADAS */
+        --primary: #0c4acd;        /* ← ERA #0F2027 */
+        --primary-light: #298bde;
+        --primary-dark: #0a3ba8;
+        --secondary: #FFF200;
+        --secondary-dark: #E6DA00;
+        --white: #FFFFFF;
+        --black: #0F2027;
+    }
+    
+    html { 
+        scroll-behavior: smooth; 
+    }
+    
+    body { 
+        font-family: 'Inter', sans-serif; 
+        margin: 0;
+        padding: 0;
+        color: #1e293b;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+        background: white;
+    }
+    
+    /* GRID SOLAR (background pattern) */
+    .solar-grid {
+        background-image: 
+            linear-gradient(rgba(255,242,0,0.03) 1px, transparent 1px), 
+            linear-gradient(90deg, rgba(255,242,0,0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+    }
+    
+    /* FORMAS ORGÂNICAS (do Instagram) */
+    .organic-shape {
+        position: absolute;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        filter: blur(80px);
+        opacity: 0.15;
+    }
+    
+    /* GLASS EFFECT (atualizado com azul) */
+    .glass-blue {
+        background: rgba(12, 74, 205, 0.1);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(12, 74, 205, 0.2);
+    }
+    
+    /* SECTION CURVE */
+    .section-curve {
+        clip-path: ellipse(150% 100% at 50% 100%);
+    }
+    
+    /* SCROLLBAR */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-dark);
+    }
+    
+    /* SELECTION */
+    ::selection {
+        background-color: var(--secondary);
+        color: var(--primary);
+    }
+    
+    /* ANIMAÇÕES */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+</style>
         ::-webkit-scrollbar {
             width: 8px;
         }
