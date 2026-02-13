@@ -4,7 +4,7 @@ import { useLeadModal } from '../contexts/LeadContext'; // Import from 'contexts
 import { COLORS, GRADIENTS, WEBHOOK_URL } from '../constants';
 
 const LeadModal: React.FC = () => {
-    const { isModalOpen, closeModal } = useLeadModal();
+    const { isModalOpen, closeModal, redirectUrl } = useLeadModal();
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
@@ -44,7 +44,8 @@ const LeadModal: React.FC = () => {
             });
 
             // Navigate to /obrigado
-            window.location.href = '/obrigado';
+            // Navigate to redirectUrl (WhatsApp or /obrigado)
+            window.location.href = redirectUrl;
 
         } catch (error) {
             console.error('Error submitting form:', error);
@@ -52,7 +53,7 @@ const LeadModal: React.FC = () => {
             // For lead gen, usually better to redirect to thank you page to not lose momentum, 
             // or at least show a fallback message.
             // I'll redirect for now as N8N might not return CORS headers 
-            window.location.href = '/obrigado';
+            window.location.href = redirectUrl;
         } finally {
             setLoading(false);
             closeModal();

@@ -3,20 +3,25 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface LeadContextType {
     isModalOpen: boolean;
-    openModal: () => void;
+    openModal: (url?: string) => void;
     closeModal: () => void;
+    redirectUrl: string;
 }
 
 const LeadContext = createContext<LeadContextType | undefined>(undefined);
 
 export const LeadProvider = ({ children }: { children: ReactNode }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [redirectUrl, setRedirectUrl] = useState('/obrigado');
 
-    const openModal = () => setIsModalOpen(true);
+    const openModal = (url?: string) => {
+        setRedirectUrl(url || '/obrigado');
+        setIsModalOpen(true);
+    };
     const closeModal = () => setIsModalOpen(false);
 
     return (
-        <LeadContext.Provider value={{ isModalOpen, openModal, closeModal }}>
+        <LeadContext.Provider value={{ isModalOpen, openModal, closeModal, redirectUrl }}>
             {children}
         </LeadContext.Provider>
     );

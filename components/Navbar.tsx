@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
           {/* CTA BUTTON */}
           <div className="flex items-center gap-4">
             <button
-              onClick={openModal}
+              onClick={() => openModal(BRAND.whatsappLink)}
               className="hidden md:flex items-center gap-2 px-6 py-3 rounded-full font-black text-sm uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-lg cursor-pointer"
               style={{
                 backgroundColor: COLORS.secondary,
@@ -175,7 +175,7 @@ const Navbar: React.FC = () => {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                openModal();
+                openModal(BRAND.whatsappLink);
               }}
               className="mt-8 px-10 py-4 rounded-full font-black text-xl uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-2xl cursor-pointer"
               style={{

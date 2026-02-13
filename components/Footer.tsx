@@ -140,7 +140,7 @@ const Footer: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={openModal}
+                onClick={() => openModal(BRAND.whatsappLink)}
                 className="hover:text-yellow-300 transition-all block text-left w-full cursor-pointer"
               >
                 Orçamento WhatsApp

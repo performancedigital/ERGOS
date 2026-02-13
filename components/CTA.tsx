@@ -60,7 +60,7 @@ const CTA: React.FC = () => {
             {/* CTA */}
             <div className="pt-6">
               <button
-                onClick={openModal}
+                onClick={() => openModal(BRAND.whatsappLink)}
                 className="inline-flex items-center gap-4 px-14 py-7 rounded-2xl font-black text-2xl uppercase tracking-tighter transition-all hover:scale-110 active:scale-95 shadow-2xl cursor-pointer"
                 style={{
                   backgroundColor: COLORS.secondary,

@@ -201,7 +201,7 @@ const Simulator: React.FC = () => {
                 {/* CTA */}
                 {/* CTA */}
                 <button
-                  onClick={openModal}
+                  onClick={() => openModal(BRAND.whatsappLink)}
                   className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-black text-xl uppercase tracking-wide transition-all hover:scale-105 active:scale-95 shadow-2xl cursor-pointer"
                   style={{
                     backgroundColor: COLORS.secondary,
