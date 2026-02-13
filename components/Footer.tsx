@@ -1,7 +1,9 @@
 import React from 'react';
 import { BRAND, COLORS, GRADIENTS, IMAGES } from '../constants';
+import { useLeadModal } from '../contexts/LeadContext';
 
 const Footer: React.FC = () => {
+  const { openModal } = useLeadModal();
   return (
     <footer
       className="text-white pt-32 pb-16 px-6 relative overflow-hidden"
@@ -137,14 +139,12 @@ const Footer: React.FC = () => {
               </a>
             </li>
             <li>
-              <a
-                href={BRAND.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-yellow-300 transition-all block"
+              <button
+                onClick={openModal}
+                className="hover:text-yellow-300 transition-all block text-left w-full cursor-pointer"
               >
                 Orçamento WhatsApp
-              </a>
+              </button>
             </li>
           </ul>
         </div>
